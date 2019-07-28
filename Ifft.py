@@ -1,0 +1,75 @@
+import cv2
+events = [i for i in dir(cv2) if 'EVENT' in i]
+import numpy as np
+from numpy import uint8, float32, float64, log, pi, sin, cos, abs, sqrt
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.gray();
+from matplotlib.pyplot import imshow
+import skimage.io as ski
+from skimage.io import imread, imsave
+
+image = cv2.imread("bone.jpg",0)
+height,width=image.shape
+im=cv2.resize(image,(int(width/8),int(height/8)))
+h,w=im.shape
+f = np.fft.fft2(im)
+fshift = np.fft.fftshift(f)
+magnitude_spectrum = 20*np.log(np.abs(fshift))
+magnitude_spectrum=magnitude_spectrum.astype(np.uint8)
+
+def draw_orbit(event,x,y,flags,param):
+    if flags==cv2.EVENT_FLAG_LBUTTON:
+        if(y>=h): y=h-1
+        if(y<0): y=0
+        if(x>=w): x=w-1
+        if(x<0): x=0
+        im2[y,x]=255
+        ifft1(x,y)
+        ifft2(x,y)
+
+def ifft1(x,y):
+    global im3,fshift,im3_back
+    im3[y,x]=fshift[y,x]
+    f_ishift = np.fft.ifftshift(im3)
+    im3_back = np.fft.ifft2(f_ishift)
+    im3_back = im3_back.real
+    im3_back=im3_back.astype(np.uint8)
+        
+def ifft2(x,y):
+    global im4,fshift,im4_back
+    im4=np.zeros((h,w),dtype=complex)
+    im4[y,x]=fshift[y,x]
+    f_ishift = np.fft.ifftshift(im4)
+    im4_back = np.fft.ifft2(f_ishift)
+    im4_back = im4_back.real
+    im4_back=im4_back.astype(np.uint8)
+
+im2 = np.zeros((h,w))
+im2.astype(np.uint8)
+im3 = np.zeros((h,w),dtype=complex)
+f_ishift = np.fft.ifftshift(im3)
+im3_back =np.fft.ifft2(f_ishift)
+im3_back = im3_back.real
+im4 = np.zeros((h,w),dtype=complex)
+f_ishift = np.fft.ifftshift(im4)
+im4_back =np.fft.ifft2(f_ishift)
+im4_back = im4_back.real
+cv2.namedWindow('Pointer',cv2.WINDOW_AUTOSIZE)
+cv2.namedWindow('Ifft',cv2.WINDOW_AUTOSIZE)
+cv2.namedWindow('Signal_Pointer',cv2.WINDOW_AUTOSIZE)
+cv2.namedWindow('Original',cv2.WINDOW_AUTOSIZE)
+cv2.namedWindow('Magnitude_Spectrum',cv2.WINDOW_AUTOSIZE)
+cv2.setMouseCallback('Pointer',draw_orbit)
+
+while(1):
+    cv2.imshow('Pointer',im2)
+    cv2.imshow('Ifft',im3_back)
+    cv2.imshow('Signal_Pointer',im4_back)
+    cv2.imshow('Original',im)
+    cv2.imshow('Magnitude_Spectrum',magnitude_spectrum)
+    k=cv2.waitKey(1)&0xFF
+    if k==ord('c'):
+        break
+        
+cv2.destroyAllWindows()
