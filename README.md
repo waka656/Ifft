@@ -59,7 +59,9 @@
   JupyterNotebook上でプログラムを実行する.
 
 〇実行時の動作
-![gif](https://vps8-d.kuku.lu/files/20190728-2119_f945b21f5e78d4021a43521955db4f4e.gif)
+
+<img src="https://vps8-d.kuku.lu/files/20190728-2119_f945b21f5e78d4021a43521955db4f4e.gif" width=70%>
+
 ※ウィンドウ名が表示されていないが,一番左が"Pointer",上左が"Original",上右が"Magnitude_Spectrum",下左が"Ifft",下右が"Signal_Pointer"である.
 
 〇依存ライブラリとバージョン
