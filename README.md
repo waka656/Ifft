@@ -60,7 +60,7 @@
 
 〇実行時の動作
 
-<img src="https://vps8-d.kuku.lu/files/20190728-2149_a9afa40490eced0b107247f241ca5980.gif" width=70%>
+<img src="https://vps8-d.kuku.lu/files/20190728-2159_b615992d8c1949c31a9042e2d7d1d681.gif" width=70%>
 
 ※ウィンドウ名が表示されていないが,一番左が"Pointer",上左が"Original",上右が"Magnitude_Spectrum",下左が"Ifft",下右が"Signal_Pointer"である.
 
