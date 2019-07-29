@@ -60,7 +60,7 @@
 
 〇実行時の動作
 
-<img src="https://vps8-d.kuku.lu/files/20190728-2159_b615992d8c1949c31a9042e2d7d1d681.gif" width=70%>
+<img src="https://vps10-d.kuku.lu/files/20190729-0143_01ba0e0d830da7b6d6b070dd3af70313.gif" width=70%>
 
 ※ウィンドウ名が表示されていないが,一番左が"Pointer",上左が"Original",上右が"Magnitude_Spectrum",下左が"Ifft",下右が"Signal_Pointer"である.
 
@@ -74,7 +74,7 @@
 〇参考にしたサイト
   - OpenCV-Python Tutorials 1 documentation/フーリエ変換(http://lang.sist.chukyo-u.ac.jp/classes/OpenCV/py_tutorials/py_imgproc/py_transforms/py_fourier_transform/py_fourier_transform.html)
 
-  Numpyを使ったフーリエ変換のコードを参考にした.
+    Numpyを使ったフーリエ変換のコードを参考にした.
   - OpenCV-Python Tutorials 1 documentation/ペイントツールとしてのマウス(http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html)
 
   cv2.setMouseCallback()の使い方を参考にした.
